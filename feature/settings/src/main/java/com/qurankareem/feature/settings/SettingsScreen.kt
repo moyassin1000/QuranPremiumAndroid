@@ -1,7 +1,7 @@
 package com.qurankareem.feature.settings
 
 import android.app.Activity
-import android.app.RingtoneManager
+import android.media.RingtoneManager
 import android.content.Intent
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult

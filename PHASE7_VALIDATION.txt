@@ -1,0 +1,29 @@
+Quran Premium Phase 7 validation
+================================
+Version: 1.6.0
+versionCode: 7
+applicationId: com.qurankareem.app
+
+Validated in this environment:
+- 18 Gradle modules declared and module build files present.
+- 21 XML files parsed successfully after Phase 7 additions.
+- TOML parsed successfully.
+- Pure Kotlin stats/practice logic compiled and executed successfully.
+- Hifz verse-playlist generator compiled with Media3 API stubs and passed a 12-item repetition test.
+- Hifz URL pattern test passed: surah 1 / ayah 1 -> 001001.mp3.
+- Three app-widget providers, layouts and metadata files are present.
+- applicationId remained unchanged; versionCode incremented from 6 to 7.
+- Basic secret scan found no API key/private-key patterns and no keystore/signing files.
+
+Phase 7 functional additions:
+- Verse-by-verse Hifz repetition using EveryAyah remote MP3 files.
+- Reading/listening/Hifz/Khatma statistics screen.
+- Prayer, continue-reading and daily-Wird Android home-screen widgets.
+- Download state/progress/cancel UI.
+- Partial-file resume using HTTP Range when supported by the audio host.
+
+Environment limitation:
+A full Android Gradle compile was not executed because this runtime does not include an Android SDK or a local Gradle wrapper JAR/dependency cache. Open the project in Android Studio/JDK 17 with network access and run:
+  ./gradlew :app:assembleDebug
+  ./gradlew :app:bundleRelease
+before production publishing.

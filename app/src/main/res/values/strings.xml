@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">القرآن الكريم</string>
+
+    <string name="widget_prayer_description">الصلاة القادمة ووقتها</string>
+    <string name="widget_reading_description">متابعة آخر موضع قراءة</string>
+    <string name="widget_wird_description">تقدم الورد اليومي</string>
+</resources>

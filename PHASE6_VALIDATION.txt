@@ -1,0 +1,28 @@
+Quran Premium v1.5.0 / Phase 6 validation
+
+Validated on 2026-10-03:
+- applicationId remains com.qurankareem.app
+- versionCode = 6
+- versionName = 1.5.0
+- targetSdk = 36 / compileSdk = 37
+- 16 registered Gradle modules and every project(:module) reference resolves to a registered module
+- core:practice added for persistent Hifz, Khatma/Wird and daily Adhkar counters
+- feature:hifz, feature:khatma and feature:adhkar are registered and wired into app navigation
+- Home dashboard is wired to real Khatma/Wird state and due Hifz reviews
+- Opening a PAGE reader records the page in the active Khatma; page sets prevent duplicate counting
+- Khatma math compiled and tested: 7 days -> 87 pages/day, 30 days -> 21 pages/day, 90 days -> 7 pages/day
+- Hifz model compiled and due-review/key behavior tested
+- Adhkar catalog compiled: 20 entries across 5 non-empty categories; IDs unique; targets/text/source labels validated
+- PracticeStore Kotlin compiled against minimal Android/DataStore stubs, validating its Kotlin/API shape
+- New Compose/app sources passed Kotlin parser checks with no syntax-level errors
+- XML files parse successfully
+- version catalog TOML parses successfully
+- no keystore/private-key file types are included
+
+Important behavior:
+- Hifz repeat counts are persisted as plan data in Phase 6, but ayah-by-ayah audio repetition is not yet implemented in Media3.
+- Khatma automatic progress currently records reading in PAGE reader mode, where page identity is unambiguous.
+- Adhkar content is an initial curated set with short source labels; an independent religious-content review is recommended before public production release.
+
+Environment limitation:
+A full Android/Compose Gradle build could not be executed in this container because the Gradle wrapper JAR / Maven dependencies cannot be downloaded (outbound DNS/network is unavailable). Pure Kotlin practice logic and the Android-facing PracticeStore shape were compiled separately as described above.

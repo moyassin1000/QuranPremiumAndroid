@@ -1,0 +1,22 @@
+Quran Premium v1.4.0 / Phase 5 validation
+
+Validated on 2026-10-03:
+- applicationId remains com.qurankareem.app
+- versionCode = 5
+- versionName = 1.4.0
+- targetSdk = 36 / compileSdk = 37
+- 114 surahs metadata
+- 604 page starts decoded and Kotlin-compiled successfully
+- 30 juz starts decoded and Kotlin-compiled successfully
+- Known page mapping check: 2:255 -> page 42; 112:1 -> page 604
+- QuranTextRepository compiled against a minimal Android Context stub + coroutines
+- Offline slicing test passed: page 1 was created from a locally cached whole-Quran file without network
+- Arabic search normalization test passed: query "الحمد" matched a diacritized ayah
+- XML resources parse successfully
+- version catalog TOML parses successfully
+- required project modules are registered
+- ayah bookmark/favorite state preserves legacy page bookmark/favorite keys
+- no API keys, signing files, or bundled font binaries were added by Phase 5
+
+Limitation:
+A full Android/Compose Gradle build cannot be executed in this container because Android SDK / Maven dependency resolution is not available. The pure Kotlin Quran metadata/repository logic was compiled and exercised separately.

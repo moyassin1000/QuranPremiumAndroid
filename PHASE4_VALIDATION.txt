@@ -1,0 +1,25 @@
+Quran Premium Phase 4 validation target
+Version: 1.3.0
+versionCode: 4
+applicationId: com.qurankareem.app
+
+Implemented:
+- Theme persistence: system/light/dark/AMOLED
+- Per-prayer alert toggles and reminder minutes
+- User-selectable system ringtone for prayer alert channel
+- Optional SCHEDULE_EXACT_ALARM flow with inexact fallback
+- Alarm rescheduling on boot/package replacement
+- Default reciter persistence
+- Wi-Fi-only download setting
+- Download manager screen with delete + total size
+- Media3 playback speed controls
+- Media3 repeat-one control
+- Sleep timer
+
+Safety/release notes:
+- No USE_EXACT_ALARM permission declared.
+- Prayer alerts default to OFF.
+- No API keys, signing keys, or secrets added.
+- applicationId unchanged for Google Play update compatibility.
+
+Build attempt note: Gradle build could not complete in this environment because the pinned wrapper JAR/distribution cannot be downloaded (network/DNS is unavailable in the container). Structural validation passed.

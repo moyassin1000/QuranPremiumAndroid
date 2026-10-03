@@ -1,0 +1,33 @@
+Quran Premium Phase 8 validation
+================================
+Version: 1.7.0
+versionCode: 8
+applicationId: com.qurankareem.app
+
+Validated in this environment:
+- 18 Gradle modules declared and module build files present.
+- 21 XML files parsed successfully.
+- Version catalog TOML parsed successfully.
+- Release verification script passed applicationId/version/targetSdk/signing-material checks.
+- Hifz playlist + live-media-id parser compiled with Media3 API stubs and passed repetition/progress parsing checks.
+- UserBackupManager compiled against pure Kotlin/JSON/DataStore API stubs, validating Kotlin syntax and backup model wiring.
+- Widget direct destinations are wired to prayer, exact last-page reader route, and Khatma.
+- Backup export/restore callbacks are wired in Settings and MainActivity.
+- Secret scan found no API keys, private-key blocks, .jks or .keystore files.
+
+Phase 8 functional additions:
+- Versioned JSON backup/export and restore for reading state, settings, Hifz, Khatma, Adhkar counts, usage stats and saved location.
+- Full backup parsing/validation before any local store is modified.
+- Daily-only Wird/Adhkar state is restored only when the backup date matches today.
+- Live Hifz playback card shows current surah/ayah, ayah-repeat number, range cycle and overall queue progress with pause/resume/stop.
+- Prayer/reading/Wird widgets open their intended destination directly.
+- Conditional release signing uses environment variables only; no signing secret is stored in source.
+- GitHub Actions includes debug CI and a manual signed release-AAB workflow.
+- RELEASE_CHECKLIST.md and scripts/verify_release.py added.
+
+Environment limitation:
+A full Android Gradle compile was not executed because this runtime does not contain an Android SDK or local Gradle wrapper JAR/dependency cache. The GitHub CI workflows are configured to run Android test/lint/build with network access.
+
+Before publishing:
+  python scripts/verify_release.py
+  ./gradlew :app:testReleaseUnitTest :app:lintRelease :app:bundleRelease --stacktrace

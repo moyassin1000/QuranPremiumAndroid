@@ -2,7 +2,7 @@ package com.qurankareem.core.prayer
 
 import com.batoulapps.adhan2.CalculationMethod
 import com.batoulapps.adhan2.Coordinates
-import com.batoulapps.adhan2.DateComponents
+import com.batoulapps.adhan2.data.DateComponents
 import com.batoulapps.adhan2.PrayerTimes
 import com.batoulapps.adhan2.Qibla
 import java.time.Instant

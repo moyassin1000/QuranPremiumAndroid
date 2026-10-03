@@ -31,8 +31,10 @@ jobs:
         run: |
           set -e
           echo "ANDROID_HOME=$ANDROID_HOME"
-          yes | sdkmanager --licenses >/dev/null || true
-          sdkmanager "platform-tools" "platforms;android-37" "build-tools;36.0.0"
+          SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          test -x "$SDKMANAGER"
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
+          "$SDKMANAGER" "platform-tools" "platforms;android-37" "build-tools;36.0.0"
 
       - name: Set up Gradle 9.6.0
         uses: gradle/actions/setup-gradle@v4

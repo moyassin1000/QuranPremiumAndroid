@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.qurankareem.feature.stats"
-    compileSdk = 37
+    compileSdk = 36
     defaultConfig { minSdk = 26 }
     buildFeatures { compose = true }
     compileOptions {

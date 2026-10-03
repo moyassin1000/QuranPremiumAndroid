@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.qurankareem.core.design"
-    compileSdk = 37
+    compileSdk = 36
 
     defaultConfig { minSdk = 26 }
 

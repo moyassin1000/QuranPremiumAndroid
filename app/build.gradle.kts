@@ -13,7 +13,7 @@ val releaseSigningReady = listOf(
 
 android {
     namespace = "com.qurankareem.app"
-    compileSdk = 37
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.qurankareem.app"

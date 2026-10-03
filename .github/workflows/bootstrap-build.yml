@@ -45,7 +45,7 @@ jobs:
         run: python scripts/verify_release.py
 
       - name: Build debug APK
-        run: gradle :app:assembleDebug --stacktrace --no-daemon
+        run: gradle :app:assembleDebug --no-daemon --console=plain --warning-mode=none
 
       - name: Verify APK exists
         run: |

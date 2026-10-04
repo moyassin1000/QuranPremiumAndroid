@@ -1,7 +1,6 @@
 package com.qurankareem.feature.settings
 
 import android.app.Activity
-import android.media.RingtoneManager
 import android.content.Intent
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -82,12 +81,11 @@ fun SettingsScreen(
     val ringtonePicker = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             @Suppress("DEPRECATION")
-            val picked = result.data?.getParcelableExtra<Uri>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
+            val picked = result.data?.getParcelableExtra<Uri>(EXTRA_RINGTONE_PICKED_URI)
             if (picked == null) {
                 onAdhanSound(SILENT_SOUND, "بدون صوت")
             } else {
-                val label = runCatching { RingtoneManager.getRingtone(context, picked)?.getTitle(context) }.getOrNull()
-                    ?: "صوت مختار"
+                val label = picked.lastPathSegment?.takeIf { it.isNotBlank() } ?: "صوت مختار"
                 onAdhanSound(picked.toString(), label)
             }
         }
@@ -95,12 +93,12 @@ fun SettingsScreen(
 
     fun openRingtonePicker() {
         val current = settings.adhanSoundUri.takeIf { it.isNotBlank() && it != SILENT_SOUND }?.let(Uri::parse)
-        val intent = Intent(RingtoneManager.ACTION_RINGTONE_PICKER).apply {
-            putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_ALARM)
-            putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true)
-            putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, true)
-            putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, current)
-            putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, "اختر صوت الأذان أو التنبيه")
+        val intent = Intent(ACTION_RINGTONE_PICKER).apply {
+            putExtra(EXTRA_RINGTONE_TYPE, TYPE_ALARM)
+            putExtra(EXTRA_RINGTONE_SHOW_DEFAULT, true)
+            putExtra(EXTRA_RINGTONE_SHOW_SILENT, true)
+            putExtra(EXTRA_RINGTONE_EXISTING_URI, current)
+            putExtra(EXTRA_RINGTONE_TITLE, "اختر صوت الأذان أو التنبيه")
         }
         ringtonePicker.launch(intent)
     }
@@ -325,3 +323,11 @@ private fun themeLabel(mode: ThemeMode): String = when (mode) {
 }
 
 private const val SILENT_SOUND = "__silent__"
+private const val ACTION_RINGTONE_PICKER = "android.intent.action.RINGTONE_PICKER"
+private const val EXTRA_RINGTONE_TYPE = "android.intent.extra.ringtone.TYPE"
+private const val EXTRA_RINGTONE_SHOW_DEFAULT = "android.intent.extra.ringtone.SHOW_DEFAULT"
+private const val EXTRA_RINGTONE_SHOW_SILENT = "android.intent.extra.ringtone.SHOW_SILENT"
+private const val EXTRA_RINGTONE_EXISTING_URI = "android.intent.extra.ringtone.EXISTING_URI"
+private const val EXTRA_RINGTONE_PICKED_URI = "android.intent.extra.ringtone.PICKED_URI"
+private const val EXTRA_RINGTONE_TITLE = "android.intent.extra.ringtone.TITLE"
+private const val TYPE_ALARM = 4
